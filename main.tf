@@ -6,7 +6,8 @@ resource "aws_vpc" "main" {
   tags = merge(
     var.tags,
     {
-      Name = var.vpc_name
+      Name          = var.vpc_name
+      ModuleVersion = var.module_version
     }
   )
 }
@@ -21,8 +22,9 @@ resource "aws_subnet" "public" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.vpc_name}-public-${count.index + 1}"
-      Type = "public"
+      Name          = "${var.vpc_name}-public-${count.index + 1}"
+      Type          = "public"
+      ModuleVersion = var.module_version
     }
   )
 }
@@ -36,8 +38,9 @@ resource "aws_subnet" "private" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.vpc_name}-private-${count.index + 1}"
-      Type = "private"
+      Name          = "${var.vpc_name}-private-${count.index + 1}"
+      Type          = "private"
+      ModuleVersion = var.module_version
     }
   )
 }
@@ -49,7 +52,8 @@ resource "aws_internet_gateway" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.vpc_name}-igw"
+      Name          = "${var.vpc_name}-igw"
+      ModuleVersion = var.module_version
     }
   )
 }
@@ -61,7 +65,8 @@ resource "aws_route_table" "public" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.vpc_name}-public-rt"
+      Name          = "${var.vpc_name}-public-rt"
+      ModuleVersion = var.module_version
     }
   )
 }
@@ -86,7 +91,8 @@ resource "aws_route_table" "private" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.vpc_name}-private-rt-${count.index + 1}"
+      Name          = "${var.vpc_name}-private-rt-${count.index + 1}"
+      ModuleVersion = var.module_version
     }
   )
 }

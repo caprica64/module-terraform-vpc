@@ -14,7 +14,7 @@ A simple, reusable Terraform module for creating AWS VPCs with public and privat
 
 ```hcl
 module "vpc" {
-  source = "github.com/[your-username]/module-terraform-vpc?ref=v1.0.0"
+  source = "github.com/[your-username]/module-terraform-vpc?ref=v1.0.1"
 
   vpc_name           = "my-vpc"
   vpc_cidr           = "10.0.0.0/16"
@@ -22,6 +22,8 @@ module "vpc" {
 
   public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
   private_subnet_cidrs = ["10.0.10.0/24", "10.0.20.0/24"]
+
+  module_version = "v1.0.1"
 
   tags = {
     Environment = "production"
@@ -41,6 +43,7 @@ module "vpc" {
 | private_subnet_cidrs | CIDR blocks for private subnets | `list(string)` | `[]` | no |
 | enable_dns_hostnames | Enable DNS hostnames in the VPC | `bool` | `true` | no |
 | enable_dns_support | Enable DNS support in the VPC | `bool` | `true` | no |
+| module_version | Version tag for the module (e.g., v1.0.1) | `string` | `"v1.0.1"` | no |
 | tags | Additional tags for all resources | `map(string)` | `{}` | no |
 
 ## Outputs
@@ -64,7 +67,7 @@ See the [examples/basic](examples/basic) directory for a complete example.
 This module follows semantic versioning. Use Git tags to reference specific versions:
 
 ```hcl
-source = "github.com/[your-username]/module-terraform-vpc?ref=v1.0.0"
+source = "github.com/[your-username]/module-terraform-vpc?ref=v1.0.1"
 ```
 
 ## Requirements

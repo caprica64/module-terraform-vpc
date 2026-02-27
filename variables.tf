@@ -43,3 +43,9 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "module_version" {
+  description = "Version tag for the module (e.g., v1.0.1)"
+  type        = string
+  default     = "v1.0.1"
+}
